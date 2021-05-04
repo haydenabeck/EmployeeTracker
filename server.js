@@ -138,19 +138,48 @@ const roleSearch = () => {
 };
 
 // Add an employee
-const addDepartment = () => {
+const addEmployee = () => {
   inquirer
-    .prompt({
+    .prompt([{
       type: 'input',
-      name: 'departmentName',
-      message: 'What department would you like to add?',
-    })
+      name: 'first_name',
+      message: 'What is your first name?',
+    },
+    {
+      type: 'input',
+      name: 'last_name',
+      message: 'What is your last name?',
+
+    },
+    {
+      type: 'input',
+      name: 'role_id',
+      message: 'What role id would you like to add?',
+
+    },
+    {
+      type: 'input',
+      name: 'manager_id',
+      message: 'What manager id would you like to add?',
+
+    }])
+
     .then((answer) => {
-      const query = 'INSERT INTO department SET ?';
-      connection.query(query, { name: answer.departmentName }, (err, res) => {
+      const query = 'INSERT INTO employee SET ?';
+      connection.query(query, { first_name: answer.first_name, last_name: answer.last_name, role_id: answer.role_id, manager_id: answer.manager_id, }, (err, res) => {
         if (err) throw err;
-        console.log("New department has been added")
+        console.log("New employee has been added")
         runSearch();
       });
     });
+};
+
+// Show all employees
+const employeeSearch = () => {
+  const query = 'SELECT * FROM employee';
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    runSearch();
+  });
 };
