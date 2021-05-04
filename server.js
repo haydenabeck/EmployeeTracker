@@ -21,15 +21,16 @@ const runSearch = () => {
       type: 'rawlist',
       message: 'What would you like to do?',
       choices: [
-        'Would you like to add a new department?',
-        'Would you like to view departments?',
-        'Would you like to add a new role?',
-        'Would you like to view roles?',
-        'Would you like to add a new employee?',
-        'Would you like to view employees?',
-        'Would you like to update employee roles?',
+        'Add a new department',
+        'Find all departments',
+        'Add a new role',
+        'Find all roles',
+        'Add a new employee',
+        'Find all employees',
+        'Update employee roles',
       ],
     })
+    
     .then((answer) => {
       switch (answer.action) {
         case 'Add a new department':
