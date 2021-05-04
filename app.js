@@ -75,7 +75,7 @@ const addEmployeePrompt = () => {
     {
         type: 'list',
         name: '',
-        message: 'Would you like to add a new department?',
+        message: 'Would you like to add a new employee?',
         choices: ['Yes', 'No']
     }
     ])
