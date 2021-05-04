@@ -31,7 +31,7 @@ const runSearch = () => {
         'Update employee roles',
       ],
     })
-    
+
     .then((answer) => {
       switch (answer.action) {
         case 'Add a new department':
@@ -68,29 +68,89 @@ const runSearch = () => {
     });
 };
 
-
+// Add a department
 const addDepartment = () => {
   inquirer
     .prompt({
-        type: 'input',
-        name: 'departmentName',
-        message: 'What department would you like to add?',
+      type: 'input',
+      name: 'departmentName',
+      message: 'What department would you like to add?',
     })
     .then((answer) => {
       const query = 'INSERT INTO department SET ?';
       connection.query(query, { name: answer.departmentName }, (err, res) => {
-        if (err) throw err ;
+        if (err) throw err;
         console.log("New department has been added")
         runSearch();
       });
     });
 };
 
+// Show all departments
 const departmentSearch = () => {
   const query = 'SELECT * FROM department';
   connection.query(query, (err, res) => {
-    if (err) throw err ;
-    ctable(res);
+    if (err) throw err;
+    console.table(res);
     runSearch();
   });
+};
+
+// Add a role
+const addRole = () => {
+  inquirer
+    .prompt([{
+      type: 'input',
+      name: 'title',
+      message: 'What role would you like to add?',
+    },
+    {
+      type: 'input',
+      name: 'salary',
+      message: 'What salary would you like to add?',
+
+    },
+    {
+      type: 'input',
+      name: 'department_id',
+      message: 'What department id would you like to add?',
+
+    }])
+
+    .then((answer) => {
+      const query = 'INSERT INTO role SET ?';
+      connection.query(query, { title: answer.title, salary: answer.salary, department_id: answer.department_id, }, (err, res) => {
+        if (err) throw err;
+        console.log("New role has been added")
+        runSearch();
+      });
+    });
+};
+
+// Show all roles
+const roleSearch = () => {
+  const query = 'SELECT * FROM role';
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    runSearch();
+  });
+};
+
+// Add an employee
+const addDepartment = () => {
+  inquirer
+    .prompt({
+      type: 'input',
+      name: 'departmentName',
+      message: 'What department would you like to add?',
+    })
+    .then((answer) => {
+      const query = 'INSERT INTO department SET ?';
+      connection.query(query, { name: answer.departmentName }, (err, res) => {
+        if (err) throw err;
+        console.log("New department has been added")
+        runSearch();
+      });
+    });
 };
