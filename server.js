@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
+const ctable = require('console.table');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -71,53 +72,25 @@ const runSearch = () => {
 const addDepartment = () => {
   inquirer
     .prompt({
-        type: 'list',
-        name: '',
+        type: 'input',
+        name: 'departmentName',
         message: 'What department would you like to add?',
-        choices: ['']
     })
     .then((answer) => {
-      const query = 'SELECT position, song, year FROM top5000 WHERE ?';
-      connection.query(query, { artist: answer.artist }, (err, res) => {
-        res.forEach(({ position, song, year }) => {
-          console.log(
-            `Position: ${position} || Song: ${song} || Year: ${year}`
-          );
-        });
+      const query = 'INSERT INTO department SET ?';
+      connection.query(query, { name: answer.departmentName }, (err, res) => {
+        if (err) throw err ;
+        console.log("New department has been added")
         runSearch();
       });
     });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
 const departmentSearch = () => {
-  inquirer
-    .prompt({
-        type: 'list',
-        name: '',
-        message: 'What department would you like to add?',
-        choices: ['']
-    })
-    .then((answer) => {
-      const query = 'SELECT position, song, year FROM top5000 WHERE ?';
-      connection.query(query, { artist: answer.artist }, (err, res) => {
-        res.forEach(({ position, song, year }) => {
-          console.log(
-            `Position: ${position} || Song: ${song} || Year: ${year}`
-          );
-        });
-        runSearch();
-      });
-    });
+  const query = 'SELECT * FROM department';
+  connection.query(query, (err, res) => {
+    if (err) throw err ;
+    ctable(res);
+    runSearch();
+  });
 };
