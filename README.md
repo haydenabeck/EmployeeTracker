@@ -2,7 +2,7 @@
 
 ## Live Link
 Please enjoy this brief video detailing the workings of this application
-
+https://drive.google.com/file/d/1ANw24Cyo_Urh2M-QU_V7u6VZQolo-2XL/view
 
 ## Contributors 
 @haydenabeck
@@ -19,10 +19,13 @@ This application is designed to help a user keep better track of their business 
 
 ## Screenshots/Video
 Here's another link to the video of things working
+https://drive.google.com/file/d/1ANw24Cyo_Urh2M-QU_V7u6VZQolo-2XL/view
 
 Here are some screen shots of the functioning tests and questions
-<img src="" alt="">
-<img src="" alt="">
+<img src=".\assets\Screenshot (45).png" alt="">
+<img src=".\assets\Screenshot (46).png" alt="">
+<img src=".\assets\Screenshot (47).png" alt="">
+
 
 ## Contact 
 #### Name (@haydenabeck)
