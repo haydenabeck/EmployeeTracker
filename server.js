@@ -166,7 +166,7 @@ const addEmployee = () => {
 
     .then((answer) => {
       const query = 'INSERT INTO employee SET ?';
-      connection.query(query, { first_name: answer.first_name, last_name: answer.last_name, role_id: answer.role_id, manager_id: answer.manager_id, }, (err, res) => {
+      connection.query(query, { first_name: answer.first_name, last_name: answer.last_name, role_id: answer.role_id, manager_id: answer.manager_id}, (err, res) => {
         if (err) throw err;
         console.log("New employee has been added")
         runSearch();
@@ -183,3 +183,22 @@ const employeeSearch = () => {
     runSearch();
   });
 };
+
+// // Update an employee role
+// const updateEmployeeRoles = () => {
+//   inquirer
+//     .prompt([{
+//       type: 'input',
+//       name: 'newRole',
+//       message: 'What is your new role id?',
+//     }])
+
+//     .then((answer) => {
+//       const query = 'UPDATE employee SET role_id WHERE id = 1';
+//       connection.query(query, { role_id: answer.newRole, }, (err, res) => {
+//         if (err) throw err;
+//         console.log("New employee role has been added")
+//         runSearch();
+//       });
+//     });
+// };
