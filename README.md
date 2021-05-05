@@ -21,7 +21,7 @@ This application is designed to help a user keep better track of their business 
 Here's another link to the video of things working
 https://drive.google.com/file/d/1ANw24Cyo_Urh2M-QU_V7u6VZQolo-2XL/view
 
-Here are some screen shots of the functioning tests and questions
+Here are some screen shots of the functioning questions
 <img src=".\assets\Screenshot (45).png" alt="">
 <img src=".\assets\Screenshot (46).png" alt="">
 <img src=".\assets\Screenshot (47).png" alt="">
