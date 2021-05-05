@@ -28,7 +28,6 @@ const runSearch = () => {
         'Find all roles',
         'Add a new employee',
         'Find all employees',
-        'Update employee roles',
       ],
     })
 
@@ -56,9 +55,6 @@ const runSearch = () => {
 
         case 'Find all employees':
           employeeSearch();
-          break;
-        case 'Update employee roles':
-          updateEmployeeRoles();
           break;
 
         default:
